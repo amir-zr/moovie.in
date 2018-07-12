@@ -1,0 +1,41 @@
+# Redirect to without www address
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.*)$ [NC]
+RewriteRule (.*) https://%1%{REQUEST_URI} [L,R=301]
+
+# disable directory listing
+ IndexIgnore *
+# Set Expires headers
+ExpiresActive On
+
+ExpiresDefault "access plus 1 years"
+
+ExpiresByType text/html "access plus 1 second"
+
+ExpiresByType text/plain "access plus 1 second"
+
+ExpiresByType image/gif "access plus 2592000 seconds"
+
+ExpiresByType image/jpeg "access plus 2592000 seconds"
+
+ExpiresByType image/jpg "access plus 2592000 seconds"
+
+ExpiresByType image/png "access plus 2592000 seconds"
+
+ExpiresByType image/x-icon "access plus 2592000 seconds"
+
+ExpiresByType text/css "access plus 604800 seconds"
+
+ExpiresByType text/javascript "access plus 604800 seconds"
+
+ExpiresByType application/x-javascript "access plus 604800 seconds"
+
+php_value date.timezone 'Asia/Tehran'

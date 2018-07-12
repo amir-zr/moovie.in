@@ -1,0 +1,29 @@
+.vjs-watermark {
+    position: absolute;
+    display: inline;
+    z-index: 2000;
+    top: 15% !important;
+    left: 3% !important;
+    opacity: 0.8 !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    font-family: 'teshrin-medium' !important;
+    padding: 7px !important;
+    border-radius: 4px !important;
+}
+
+@media (min-width: 0px) and (max-width: 360px) {
+    .vjs-watermark {
+        font-size: 10px !important;
+    }
+}
+@media (min-width: 361px) and (max-width: 780px) {
+    .vjs-watermark {
+        font-size: 12px !important;
+    }
+}
+@media (min-width: 781px) {
+    .vjs-watermark {
+        font-size: 14px !important;
+    }
+}
